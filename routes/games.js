@@ -7,13 +7,13 @@ router.post('/', function(req,res){
     var title = req.body.game.title;
     var genre = req.body.game.genre;
     var gameImg = req.body.game.gameImg;
-    var userId = req.body.user.id;
+    // var userId = req.body.user.id;
 
     Game.create({
         title: title,
         genre:genre,
         gameImg:gameImg,
-        owner: userId
+        // owner: userId
 
     }).then(
         //Sequelize is going to retrun the object it created from the db.
@@ -34,7 +34,7 @@ router.post('/', function(req,res){
 
 
 router.get('/', function(req, res) {
-    Game.findAll({where: {owner:userId}})
+     Game.findAll(/*{where: {owner:userId}}*/)
     .then(
         function getGameSucess(Game){
             res.json({

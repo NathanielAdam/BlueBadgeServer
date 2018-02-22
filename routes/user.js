@@ -7,7 +7,8 @@ router.post('/', function(req, res) {
     // when we post to the api user, it will want a user in the object body
     var username = req.body.user.username;
     var pass = req.body.user.password;
-    var email = req.body.user.email //TODOL hash this password -HASH=not human readable
+    var email = req.body.user.email
+    var modal = req.body.user.modal //TODOL hash this password -HASH=not human readable
     //Need to create a user object and use sequelize to put that user into
 
     // match the model we create above
@@ -15,10 +16,12 @@ router.post('/', function(req, res) {
     User.create({
         username: username,
         passwordhash: bcrypt.hashSync(pass, 10),
-        email:email
+        email:email,
+        modal:modal
     }).then(
         //Sequelize is going to retrun the object it created from the db.
         function createSucess(user){
+            console.log(process.env.JWT_SECRET)
             var token = jwt.sign({id:user.id}, process.env.JWT_SECRET, {expiresIn: 60*60*24})
             // successful get this
             res.json({

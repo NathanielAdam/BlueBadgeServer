@@ -3,7 +3,12 @@
 
 module.exports = function(sequelize, DataTypes){
     return sequelize.define('user', {
-            username: DataTypes.STRING,
+            username:{ 
+                type:DataTypes.STRING,
+                validate:{
+                    unique:true
+                }
+            },
             passwordhash: DataTypes.STRING,
             email: {
                 type:DataTypes.STRING,
@@ -11,7 +16,8 @@ module.exports = function(sequelize, DataTypes){
                 validate:{
                     isEmail: true
                 }
-            }
+            },
+            modal: DataTypes.BOOLEAN
     })
     return User;
 };

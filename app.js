@@ -1,13 +1,11 @@
-
+require('dotenv').config();
 var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
 var sequelize = require('./db');
 var User= sequelize.import(__dirname + '\\models\\user')
 
-// build user model
-   
-// User.sync();
+
 // sequelize.sync({force:true});
 sequelize.sync();
 app.use(bodyParser.json());
