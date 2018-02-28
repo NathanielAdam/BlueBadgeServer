@@ -8,7 +8,7 @@ router.post('/', function(req, res) {
     var username = req.body.user.username;
     var pass = req.body.user.password;
     var email = req.body.user.email
-    var modal = req.body.user.modal //TODOL hash this password -HASH=not human readable
+     //TODOL hash this password -HASH=not human readable
     //Need to create a user object and use sequelize to put that user into
 
     // match the model we create above
@@ -16,8 +16,7 @@ router.post('/', function(req, res) {
     User.create({
         username: username,
         passwordhash: bcrypt.hashSync(pass, 10),
-        email:email,
-        modal:modal
+        email:email
     }).then(
         //Sequelize is going to retrun the object it created from the db.
         function createSucess(user){

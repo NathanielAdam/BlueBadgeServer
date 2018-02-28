@@ -6,7 +6,7 @@ var sequelize = require('./db');
 var User= sequelize.import(__dirname + '\\models\\user')
 
 
-// sequelize.sync({force:true});
+//sequelize.sync({force:true});
 sequelize.sync();
 app.use(bodyParser.json());
 

@@ -5,9 +5,9 @@ module.exports = function(sequelize, DataTypes){
     return sequelize.define('user', {
             username:{ 
                 type:DataTypes.STRING,
-                validate:{
+                
                     unique:true
-                }
+                
             },
             passwordhash: DataTypes.STRING,
             email: {
@@ -19,5 +19,4 @@ module.exports = function(sequelize, DataTypes){
             },
             modal: DataTypes.BOOLEAN
     })
-    return User;
 };
